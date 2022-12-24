@@ -1,6 +1,5 @@
-import { Box, Text } from '@chakra-ui/react';
-import { Table } from '@mfe/ui';
-import Head from 'next/head';
+import { Box, Text } from "@chakra-ui/react";
+import Head from "next/head";
 
 export default function Index() {
   return (
@@ -13,8 +12,6 @@ export default function Index() {
         <Text>
           Hello from <strong>Remote2!</strong>
         </Text>
-
-        <Table />
       </Box>
     </>
   );
