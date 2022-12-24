@@ -14,8 +14,8 @@ const nextConfig = {
     config.plugins.push(
       new NextFederationPlugin({
         name: "remote2",
-        remotes: {},
         filename: "static/chunks/remote-entry.js",
+        remotes: {},
         exposes: {},
         shared: {
           "@chakra-ui/react": {

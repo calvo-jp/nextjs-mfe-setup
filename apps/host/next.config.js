@@ -16,11 +16,11 @@ const nextConfig = {
     config.plugins.push(
       new NextFederationPlugin({
         name: "host",
+        filename: `static/chunks/remote-entry.js`,
         remotes: {
           remote1: `remote1@http://localhost:3001/_next/static/${subpath}/remote-entry.js`,
           remote2: `remote2@http://localhost:3002/_next/static/${subpath}/remote-entry.js`,
         },
-        filename: `static/chunks/remote-entry.js`,
         exposes: {},
         shared: {
           "@chakra-ui/react": {
