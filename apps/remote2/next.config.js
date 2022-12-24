@@ -36,6 +36,7 @@ const nextConfig = {
         extraOptions: {
           exposePages: true,
           enableImageLoaderFix: true,
+          automaticAsyncBoundary: true,
         },
       })
     );
