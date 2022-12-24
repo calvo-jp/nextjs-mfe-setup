@@ -1,1 +1,1 @@
-export { default as Table } from './lib/table';
+export { default as Error404 } from "./lib/Error404";

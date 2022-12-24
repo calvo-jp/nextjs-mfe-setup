@@ -3,7 +3,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withNx } = require('@nrwl/next/plugins/with-nx');
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
-const packageJson = require('../../package.json');
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -17,20 +16,32 @@ const nextConfig = {
       new NextFederationPlugin({
         name: 'remote1',
         remotes: {},
-        filename: 'static/chunks/remote-entry.js',
+        filename: `static/chunks/remote-entry.js`,
         exposes: {},
         shared: {
           '@chakra-ui/react': {
-            version: packageJson.dependencies['@chakra-ui/react'],
+            eager: true,
+            singleton: true,
           },
           '@emotion/react': {
-            version: packageJson.dependencies['@emotion/react'],
+            eager: true,
+            singleton: true,
           },
           '@emotion/styled': {
-            version: packageJson.dependencies['@emotion/styled'],
+            eager: true,
+            singleton: true,
           },
           'framer-motion': {
-            version: packageJson.dependencies['framer-motion'],
+            eager: true,
+            singleton: true,
+          },
+          '@apollo/client': {
+            eager: true,
+            singleton: true,
+          },
+          graphql: {
+            eager: true,
+            singleton: true,
           },
         },
         extraOptions: {

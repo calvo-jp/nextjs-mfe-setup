@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve:all": "nx run-many --target=serve --projects=\"host,remote1,remote2\" --parallel"
+    "serve:all": "nx run-many --target=serve --projects=\"host,remote1,remote2\" --parallel",
+    "codegen": "nx run graphql:codegen"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,12 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "@graphql-codegen/add": "^3.2.3",
+    "@graphql-codegen/cli": "^2.16.1",
+    "@graphql-codegen/fragment-matcher": "^3.3.3",
+    "@graphql-codegen/typescript": "^2.8.5",
+    "@graphql-codegen/typescript-operations": "^2.5.10",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@nrwl/cypress": "15.4.1",
     "@nrwl/eslint-plugin-nx": "15.4.1",
     "@nrwl/jest": "15.4.1",
@@ -43,6 +50,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "babel-jest": "28.1.1",
     "cypress": "^11.0.0",
+    "dotenv": "^16.0.3",
     "eslint": "~8.15.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "8.1.0",
@@ -51,6 +59,7 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
+    "graphql-config": "^4.3.6",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "nx": "15.4.1",
