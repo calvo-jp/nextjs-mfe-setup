@@ -1,6 +1,5 @@
-//@ts-check
+// @ts-check
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
 const { withNx } = require("@nrwl/next/plugins/with-nx");
 
