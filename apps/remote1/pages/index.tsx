@@ -1,18 +1,40 @@
-import { Box, Text } from '@chakra-ui/react';
-import Head from 'next/head';
+import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+  CountriesDocument,
+  CountriesQuery,
+  CountriesQueryVariables,
+  graphqlClient,
+} from "@mfe/graphql";
+import Head from "next/head";
+import Link from "next/link";
 
-export default function Index() {
+export default function Index({ countries }: CountriesQuery) {
   return (
     <>
       <Head>
-        <title>Welcome to remote1!</title>
+        <title>{`Countries (${countries.length})`}</title>
       </Head>
 
       <Box p={4}>
-        <Text>
-          Hello from <strong>Remote1!</strong>
-        </Text>
+        <UnorderedList>
+          {countries.map(({ code, name }) => (
+            <ListItem key={code}>
+              <Link href={`/${code}`}>{name}</Link>
+            </ListItem>
+          ))}
+        </UnorderedList>
       </Box>
     </>
   );
 }
+
+Index.getInitialProps = async () => {
+  const { data } = await graphqlClient.query<
+    CountriesQuery,
+    CountriesQueryVariables
+  >({
+    query: CountriesDocument,
+  });
+
+  return { ...data };
+};

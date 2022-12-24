@@ -132,6 +132,8 @@ export type _Service = {
   sdl?: Maybe<Scalars['String']>;
 };
 
+export type CoreCountryDataFragment = { __typename?: 'Country', code: string, name: string, native: string, phone: string, capital?: string | null, currency?: string | null, emoji: string, emojiU: string, continent: { __typename?: 'Continent', code: string, name: string }, languages: Array<{ __typename?: 'Language', code: string, name?: string | null, native?: string | null, rtl: boolean }>, states: Array<{ __typename?: 'State', code?: string | null, name: string }> };
+
 export type CountryQueryVariables = Exact<{
   code: Scalars['ID'];
 }>;
@@ -139,35 +141,44 @@ export type CountryQueryVariables = Exact<{
 
 export type CountryQuery = { __typename?: 'Query', country?: { __typename?: 'Country', code: string, name: string, native: string, phone: string, capital?: string | null, currency?: string | null, emoji: string, emojiU: string, continent: { __typename?: 'Continent', code: string, name: string }, languages: Array<{ __typename?: 'Language', code: string, name?: string | null, native?: string | null, rtl: boolean }>, states: Array<{ __typename?: 'State', code?: string | null, name: string }> } | null };
 
+export type CountriesQueryVariables = Exact<{ [key: string]: never; }>;
 
-export const CountryDocument = /*#__PURE__*/ gql`
-    query Country($code: ID!) {
-  country(code: $code) {
+
+export type CountriesQuery = { __typename?: 'Query', countries: Array<{ __typename?: 'Country', code: string, name: string, native: string, phone: string, capital?: string | null, currency?: string | null, emoji: string, emojiU: string, continent: { __typename?: 'Continent', code: string, name: string }, languages: Array<{ __typename?: 'Language', code: string, name?: string | null, native?: string | null, rtl: boolean }>, states: Array<{ __typename?: 'State', code?: string | null, name: string }> }> };
+
+export const CoreCountryDataFragmentDoc = /*#__PURE__*/ gql`
+    fragment CoreCountryData on Country {
+  code
+  name
+  native
+  phone
+  continent {
+    code
+    name
+  }
+  capital
+  currency
+  languages {
     code
     name
     native
-    phone
-    continent {
-      code
-      name
-    }
-    capital
-    currency
-    languages {
-      code
-      name
-      native
-      rtl
-    }
-    emoji
-    emojiU
-    states {
-      code
-      name
-    }
+    rtl
+  }
+  emoji
+  emojiU
+  states {
+    code
+    name
   }
 }
     `;
+export const CountryDocument = /*#__PURE__*/ gql`
+    query Country($code: ID!) {
+  country(code: $code) {
+    ...CoreCountryData
+  }
+}
+    ${CoreCountryDataFragmentDoc}`;
 export function useCountryQuery(baseOptions: Apollo.QueryHookOptions<CountryQuery, CountryQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<CountryQuery, CountryQueryVariables>(CountryDocument, options);
@@ -181,4 +192,25 @@ export type CountryLazyQueryHookResult = ReturnType<typeof useCountryLazyQuery>;
 export type CountryQueryResult = Apollo.QueryResult<CountryQuery, CountryQueryVariables>;
 export function refetchCountryQuery(variables: CountryQueryVariables) {
       return { query: CountryDocument, variables: variables }
+    }
+export const CountriesDocument = /*#__PURE__*/ gql`
+    query Countries {
+  countries {
+    ...CoreCountryData
+  }
+}
+    ${CoreCountryDataFragmentDoc}`;
+export function useCountriesQuery(baseOptions?: Apollo.QueryHookOptions<CountriesQuery, CountriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CountriesQuery, CountriesQueryVariables>(CountriesDocument, options);
+      }
+export function useCountriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CountriesQuery, CountriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CountriesQuery, CountriesQueryVariables>(CountriesDocument, options);
+        }
+export type CountriesQueryHookResult = ReturnType<typeof useCountriesQuery>;
+export type CountriesLazyQueryHookResult = ReturnType<typeof useCountriesLazyQuery>;
+export type CountriesQueryResult = Apollo.QueryResult<CountriesQuery, CountriesQueryVariables>;
+export function refetchCountriesQuery(variables?: CountriesQueryVariables) {
+      return { query: CountriesDocument, variables: variables }
     }

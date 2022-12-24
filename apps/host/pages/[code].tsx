@@ -1,4 +1,4 @@
-import CountryPage from "remote1/pages/[code]";
+import CountryPage from "remote2/pages/[code]";
 
 const Country = CountryPage;
 Country.getInitialProps = CountryPage.getInitialProps;

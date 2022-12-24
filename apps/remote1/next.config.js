@@ -1,8 +1,8 @@
 //@ts-check
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { withNx } = require('@nrwl/next/plugins/with-nx');
-const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
+const { withNx } = require("@nrwl/next/plugins/with-nx");
+const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -14,28 +14,28 @@ const nextConfig = {
   webpack(config) {
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'remote1',
+        name: "remote1",
         remotes: {},
         filename: `static/chunks/remote-entry.js`,
         exposes: {},
         shared: {
-          '@chakra-ui/react': {
+          "@chakra-ui/react": {
             eager: true,
             singleton: true,
           },
-          '@emotion/react': {
+          "@emotion/react": {
             eager: true,
             singleton: true,
           },
-          '@emotion/styled': {
+          "@emotion/styled": {
             eager: true,
             singleton: true,
           },
-          'framer-motion': {
+          "framer-motion": {
             eager: true,
             singleton: true,
           },
-          '@apollo/client': {
+          "@apollo/client": {
             eager: true,
             singleton: true,
           },
@@ -49,7 +49,7 @@ const nextConfig = {
           enableImageLoaderFix: true,
           automaticAsyncBoundary: true,
         },
-      })
+      }),
     );
 
     return config;
