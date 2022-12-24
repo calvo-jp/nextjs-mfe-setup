@@ -1,0 +1,56 @@
+{
+  "name": "remote2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/remote2",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/remote2",
+        "outputPath": "dist/apps/remote2"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/remote2"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "remote2:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "remote2:build:development",
+          "port": 3002,
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "remote2:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "remote2:build:production"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/remote2/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
