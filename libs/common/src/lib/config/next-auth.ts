@@ -3,7 +3,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { z } from "zod";
 
-const nextAuthOptions: NextAuthOptions = {
+const nextAuthConfig: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
@@ -33,4 +33,4 @@ const nextAuthOptions: NextAuthOptions = {
   },
 };
 
-export default nextAuthOptions;
+export default nextAuthConfig;
