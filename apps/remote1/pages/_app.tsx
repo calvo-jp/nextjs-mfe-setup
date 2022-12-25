@@ -14,7 +14,11 @@ export default function App({
         <title>Welcome to remote1!</title>
       </Head>
 
-      <SessionProvider session={session}>
+      <SessionProvider
+        session={session}
+        refetchOnWindowFocus
+        refetchInterval={15}
+      >
         <GraphQLProvider>
           <ChakraProvider>
             <Component {...pageProps} />

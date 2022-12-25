@@ -1,5 +1,10 @@
 import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
-import { CountriesQuery } from "@mfe/common";
+import {
+  CountriesDocument,
+  CountriesQuery,
+  CountriesQueryVariables,
+  graphqlClient,
+} from "@mfe/common";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -22,3 +27,14 @@ export default function Index({ countries }: CountriesQuery) {
     </>
   );
 }
+
+Index.getInitialProps = async () => {
+  const { data } = await graphqlClient.query<
+    CountriesQuery,
+    CountriesQueryVariables
+  >({
+    query: CountriesDocument,
+  });
+
+  return { ...data };
+};
