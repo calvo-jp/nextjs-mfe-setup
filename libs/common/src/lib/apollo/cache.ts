@@ -1,5 +1,5 @@
 import { InMemoryCache } from "@apollo/client";
-import introspection from "../introspection";
+import introspection from "../generated/introspection";
 
 const cache = new InMemoryCache({
   possibleTypes: introspection.possibleTypes,

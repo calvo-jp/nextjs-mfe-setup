@@ -1,6 +1,7 @@
 export { default as apolloCache } from "./lib/apollo/cache";
 export { default as apolloClient } from "./lib/apollo/client";
 export { default as apolloLink } from "./lib/apollo/link";
+export { default as nextAuthConfig } from "./lib/config/next-auth";
 export { default as constants } from "./lib/constants";
 export {
   CoreCountryDataFragmentDoc,
@@ -10,7 +11,7 @@ export {
   useCountriesQuery,
   useCountryLazyQuery,
   useCountryQuery,
-} from "./lib/generated";
+} from "./lib/generated/graphql";
 export type {
   CoreCountryDataFragment,
   CountriesQuery,
@@ -18,5 +19,4 @@ export type {
   Country,
   CountryQuery,
   CountryQueryVariables,
-} from "./lib/generated";
-export { default as nexthAuthOptions } from "./lib/nextAuthOptions";
+} from "./lib/generated/graphql";

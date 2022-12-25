@@ -8,7 +8,7 @@ module.exports = {
     codegen: {
       overwrite: true,
       generates: {
-        "src/lib/generated.ts": {
+        "src/lib/generated/graphql.ts": {
           plugins: [
             "typescript",
             "typescript-operations",
@@ -27,7 +27,7 @@ module.exports = {
             disableDescriptions: true,
           },
         },
-        "src/lib/introspection.ts": {
+        "src/lib/generated/introspection.ts": {
           plugins: [
             "fragment-matcher",
             {
