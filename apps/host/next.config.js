@@ -30,6 +30,8 @@ const nextConfig = {
           "@apollo/client",
           "graphql",
           "next-auth",
+          "react-hook-form",
+          "@hookform/resolvers",
           "zod",
         ].reduce((obj, lib) => {
           return { ...obj, [lib]: { eager: true, singleton: true } };
