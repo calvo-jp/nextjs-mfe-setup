@@ -1,5 +1,6 @@
+import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import { GraphQLProvider } from "@mfe/common";
+import { apolloClient } from "@mfe/common";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 
@@ -9,11 +10,11 @@ export default function App({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <GraphQLProvider>
+      <ApolloProvider client={apolloClient}>
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
-      </GraphQLProvider>
+      </ApolloProvider>
     </SessionProvider>
   );
 }

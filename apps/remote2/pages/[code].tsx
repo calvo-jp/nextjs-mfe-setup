@@ -1,9 +1,9 @@
 import { Box, Code } from "@chakra-ui/react";
 import {
+  apolloClient,
   CountryDocument,
   CountryQuery,
   CountryQueryVariables,
-  graphqlClient,
 } from "@mfe/common";
 import { Error404 } from "@mfe/ui";
 import { NextPageContext } from "next";
@@ -35,7 +35,7 @@ export default function Index(props: Props) {
 
 Index.getInitialProps = async ({ query }: NextPageContext): Promise<Props> => {
   const { code } = { code: "", ...query };
-  const { data } = await graphqlClient.query<
+  const { data } = await apolloClient.query<
     CountryQuery,
     CountryQueryVariables
   >({

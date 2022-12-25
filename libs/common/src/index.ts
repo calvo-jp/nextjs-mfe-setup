@@ -1,3 +1,6 @@
+export { default as apolloCache } from "./lib/apollo/cache";
+export { default as apolloClient } from "./lib/apollo/client";
+export { default as apolloLink } from "./lib/apollo/link";
 export { default as constants } from "./lib/constants";
 export {
   CoreCountryDataFragmentDoc,
@@ -16,6 +19,4 @@ export type {
   CountryQuery,
   CountryQueryVariables,
 } from "./lib/generated";
-export { default as graphqlClient } from "./lib/graphqlClient";
-export { default as GraphQLProvider } from "./lib/GraphQLProvider";
 export { default as nexthAuthOptions } from "./lib/nextAuthOptions";

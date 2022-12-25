@@ -1,5 +1,6 @@
+import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import { GraphQLProvider } from "@mfe/common";
+import { apolloClient } from "@mfe/common";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
@@ -19,11 +20,11 @@ export default function App({
         refetchOnWindowFocus
         refetchInterval={15}
       >
-        <GraphQLProvider>
+        <ApolloProvider client={apolloClient}>
           <ChakraProvider>
             <Component {...pageProps} />
           </ChakraProvider>
-        </GraphQLProvider>
+        </ApolloProvider>
       </SessionProvider>
     </>
   );

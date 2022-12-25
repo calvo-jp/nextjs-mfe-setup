@@ -1,9 +1,9 @@
 import { Box, ListItem, UnorderedList } from "@chakra-ui/react";
 import {
+  apolloClient,
   CountriesDocument,
   CountriesQuery,
   CountriesQueryVariables,
-  graphqlClient,
 } from "@mfe/common";
 import Head from "next/head";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export default function Index({ countries }: CountriesQuery) {
 }
 
 Index.getInitialProps = async () => {
-  const { data } = await graphqlClient.query<
+  const { data } = await apolloClient.query<
     CountriesQuery,
     CountriesQueryVariables
   >({

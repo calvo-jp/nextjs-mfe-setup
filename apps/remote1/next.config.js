@@ -17,36 +17,18 @@ const nextConfig = {
         filename: `static/chunks/remote-entry.js`,
         remotes: {},
         exposes: {},
-        shared: {
-          "@chakra-ui/react": {
-            eager: true,
-            singleton: true,
-          },
-          "@emotion/react": {
-            eager: true,
-            singleton: true,
-          },
-          "@emotion/styled": {
-            eager: true,
-            singleton: true,
-          },
-          "framer-motion": {
-            eager: true,
-            singleton: true,
-          },
-          "@apollo/client": {
-            eager: true,
-            singleton: true,
-          },
-          graphql: {
-            eager: true,
-            singleton: true,
-          },
-          "next-auth": {
-            eager: true,
-            singleton: true,
-          },
-        },
+        shared: [
+          "@chakra-ui/react",
+          "@emotion/react",
+          "@emotion/styled",
+          "framer-motion",
+          "@apollo/client",
+          "graphql",
+          "next-auth",
+          "zod",
+        ].reduce((obj, lib) => {
+          return { ...obj, [lib]: { eager: true, singleton: true } };
+        }, {}),
         extraOptions: {
           exposePages: true,
           enableImageLoaderFix: true,
