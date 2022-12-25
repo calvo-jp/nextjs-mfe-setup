@@ -4,7 +4,7 @@ import {
   CountryQuery,
   CountryQueryVariables,
   graphqlClient,
-} from "@mfe/graphql";
+} from "@mfe/common";
 import { Error404 } from "@mfe/ui";
 import { NextPageContext } from "next";
 import Head from "next/head";

@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mfe/graphql": ["libs/graphql/src/index.ts"],
+      "@mfe/common": ["libs/common/src/index.ts"],
       "@mfe/ui": ["libs/ui/src/index.ts"]
     }
   },

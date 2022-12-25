@@ -1,13 +1,19 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { GraphQLProvider } from "@mfe/graphql";
+import { GraphQLProvider } from "@mfe/common";
+import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
-    <GraphQLProvider>
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </GraphQLProvider>
+    <SessionProvider session={session}>
+      <GraphQLProvider>
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </GraphQLProvider>
+    </SessionProvider>
   );
 }

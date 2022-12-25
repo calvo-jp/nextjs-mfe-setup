@@ -1,7 +1,7 @@
 {
-  "name": "graphql",
+  "name": "common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/graphql/src",
+  "sourceRoot": "libs/common/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,11 +9,11 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/graphql/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/common/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "codegen": {
-      "command": "graphql-codegen --config libs/graphql/.graphqlrc.js"
+      "command": "graphql-codegen --config libs/common/.graphqlrc.js"
     }
   }
 }
