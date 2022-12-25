@@ -5,7 +5,7 @@ import {
   CountryQuery,
   CountryQueryVariables,
 } from "@mfe/common";
-import { Error404 } from "@mfe/ui";
+import { Error404 } from "@mfe/components";
 import { NextPageContext } from "next";
 import Head from "next/head";
 
