@@ -42,6 +42,10 @@ const nextConfig = {
             eager: true,
             singleton: true,
           },
+          "next-auth": {
+            eager: true,
+            singleton: true,
+          },
         },
         extraOptions: {
           exposePages: true,
