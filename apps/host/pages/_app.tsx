@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { apolloClient } from "@mfe/common";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
@@ -11,7 +11,7 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={apolloClient}>
-        <ChakraProvider>
+        <ChakraProvider theme={extendTheme({})}>
           <Component {...pageProps} />
         </ChakraProvider>
       </ApolloProvider>

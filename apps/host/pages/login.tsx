@@ -1,5 +1,7 @@
 import { Box, Button, chakra, Input } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -8,6 +10,8 @@ const schema = z.object({
 });
 
 export default function Login() {
+  const router = useRouter();
+
   const { register, handleSubmit, formState } = useForm<z.infer<typeof schema>>(
     {
       shouldFocusError: true,
@@ -25,10 +29,12 @@ export default function Login() {
         <chakra.form
           noValidate
           onSubmit={handleSubmit(async (data) => {
-            console.log(data);
+            const result = await signIn("credentials", {
+              ...data,
+              redirect: false,
+            });
 
-            // TODO
-            // login
+            if (!result.error) await router.push("/");
           })}
         >
           <Input type="email" {...register("email")} />
