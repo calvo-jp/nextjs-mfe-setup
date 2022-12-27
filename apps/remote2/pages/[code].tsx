@@ -1,48 +1,32 @@
 import { Box, Code } from "@chakra-ui/react";
-import {
-  apolloClient,
-  CountryDocument,
-  CountryQuery,
-  CountryQueryVariables,
-} from "@mfe/common";
-import { Error404 } from "@mfe/components";
-import { NextPageContext } from "next";
+import { useCountryQuery } from "@mfe/common";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-type Props = {
-  country: CountryQuery["country"];
-};
+export default function Index() {
+  const router = useRouter();
+  const code = router.query.code?.toString();
 
-export default function Index(props: Props) {
-  if (!props.country) return <Error404 />;
+  const { data } = useCountryQuery({
+    skip: !code,
+    variables: {
+      code,
+    },
+  });
 
   return (
     <>
       <Head>
-        <title>{props.country.name}</title>
+        <title>{data?.country.name}</title>
       </Head>
 
       <Box p={4}>
         <pre>
           <Code p={8} w="full">
-            {JSON.stringify(props.country, null, 2)}
+            {JSON.stringify(data?.country, null, 2)}
           </Code>
         </pre>
       </Box>
     </>
   );
 }
-
-Index.getInitialProps = async ({ query }: NextPageContext): Promise<Props> => {
-  const { code } = { code: "", ...query };
-  const { data } = await apolloClient.query<
-    CountryQuery,
-    CountryQueryVariables
-  >({
-    query: CountryDocument,
-    variables: { code },
-  });
-
-  const { country } = data;
-  return { country };
-};

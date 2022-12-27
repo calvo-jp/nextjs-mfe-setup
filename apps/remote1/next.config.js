@@ -34,12 +34,14 @@ const nextConfig = {
         extraOptions: {
           exposePages: true,
           enableImageLoaderFix: true,
-          automaticAsyncBoundary: true,
         },
       }),
     );
 
     return config;
+  },
+  experimental: {
+    largePageDataBytes: 128 * 100000,
   },
 };
 
