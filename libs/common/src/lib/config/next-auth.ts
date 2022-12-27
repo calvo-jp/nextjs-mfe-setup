@@ -1,17 +1,21 @@
 import { faker } from "@faker-js/faker";
-import { NextAuthOptions } from "next-auth";
+import type { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { z } from "zod";
 
-const nextAuthConfig: NextAuthOptions = {
+const nextAuthConfig: AuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
-        email: {},
+        email: {
+          type: "email",
+          name: "email",
+          label: "Email",
+        },
       },
       async authorize(credentials) {
         const input = z
-          .object({ email: z.string().email() })
+          .strictObject({ email: z.string().email() })
           .parse(credentials);
 
         return {
@@ -26,7 +30,6 @@ const nextAuthConfig: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {},
   pages: {
     error: "/login",
     signIn: "/login",

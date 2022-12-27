@@ -1,6 +1,21 @@
-import CountryPage from "remote2/pages/[code]";
+import { Box } from "@chakra-ui/layout";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
-const Country = CountryPage;
-Country.getInitialProps = CountryPage.getInitialProps;
+const CountryPage = dynamic(() => import("remote2/pages/[code]"), {
+  suspense: true,
+});
 
-export default Country;
+export default function Country() {
+  return (
+    <Suspense
+      fallback={
+        <Box padding={4} fontSize="sm">
+          Loading...
+        </Box>
+      }
+    >
+      <CountryPage />
+    </Suspense>
+  );
+}
