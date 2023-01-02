@@ -40,6 +40,9 @@ const nextConfig = {
 
     return config;
   },
+  experimental: {
+    esmExternals: false,
+  },
 };
 
 module.exports = withNx(nextConfig);
