@@ -13,6 +13,7 @@ const nextConfig = {
   webpack(config, { isServer }) {
     const subpath = isServer ? "ssr" : "chunks";
 
+    config.cache = true;
     config.plugins.push(
       new NextFederationPlugin({
         name: "host",
@@ -34,10 +35,15 @@ const nextConfig = {
           "@hookform/resolvers",
           "zod",
         ].reduce((obj, lib) => {
-          return { ...obj, [lib]: { eager: true, singleton: true } };
+          return {
+            ...obj,
+            [lib]: {
+              eager: true,
+              singleton: true,
+            },
+          };
         }, {}),
         extraOptions: {
-          exposePages: true,
           enableImageLoaderFix: true,
         },
       }),

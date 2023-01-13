@@ -15,7 +15,6 @@
     "@faker-js/faker": "^7.6.0",
     "@hookform/resolvers": "^2.9.10",
     "@module-federation/nextjs-mf": "^5.12.11",
-    "@module-federation/typescript": "^2.0.3",
     "core-js": "^3.27.0",
     "framer-motion": "^8.0.2",
     "graphql": "^16.6.0",

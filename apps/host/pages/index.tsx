@@ -2,8 +2,15 @@ import { Box } from "@chakra-ui/layout";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const CountriesPage = dynamic(() => import("remote1/pages/index"), {
-  suspense: true,
+const CountriesPage = dynamic(() => import("remote1/countries"), {
+  ssr: false,
+  loading() {
+    return (
+      <Box padding={4} fontSize="sm">
+        Loading...
+      </Box>
+    );
+  },
 });
 
 export default function Countries() {

@@ -29,3 +29,5 @@ export default function App({
     </>
   );
 }
+
+import "@module-federation/nextjs-mf/src/include-defaults";

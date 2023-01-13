@@ -11,12 +11,15 @@ const nextConfig = {
     svgr: false,
   },
   webpack(config) {
+    config.cache = false;
     config.plugins.push(
       new NextFederationPlugin({
         name: "remote1",
-        filename: `static/chunks/remote-entry.js`,
+        filename: "static/chunks/remote-entry.js",
         remotes: {},
-        exposes: {},
+        exposes: {
+          "./countries": "./pages/index.tsx",
+        },
         shared: [
           "@chakra-ui/react",
           "@emotion/react",
@@ -29,10 +32,15 @@ const nextConfig = {
           "@hookform/resolvers",
           "zod",
         ].reduce((obj, lib) => {
-          return { ...obj, [lib]: { eager: true, singleton: true } };
+          return {
+            ...obj,
+            [lib]: {
+              eager: true,
+              singleton: true,
+            },
+          };
         }, {}),
         extraOptions: {
-          exposePages: true,
           enableImageLoaderFix: true,
         },
       }),

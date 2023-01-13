@@ -1,18 +1,12 @@
-import { Box, Text } from "@chakra-ui/react";
-import Head from "next/head";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const Countries = dynamic(() => import("remote1/countries"), {});
 
 export default function Index() {
   return (
-    <>
-      <Head>
-        <title>Welcome to remote2!</title>
-      </Head>
-
-      <Box p={4}>
-        <Text>
-          Hello from <strong>Remote2!</strong>
-        </Text>
-      </Box>
-    </>
+    <Suspense fallback="Loading...">
+      <Countries />
+    </Suspense>
   );
 }

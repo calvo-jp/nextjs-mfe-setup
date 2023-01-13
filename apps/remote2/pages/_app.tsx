@@ -18,3 +18,5 @@ export default function App({
     </SessionProvider>
   );
 }
+
+import "@module-federation/nextjs-mf/src/include-defaults";
